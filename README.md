@@ -24,3 +24,7 @@ SELECT * FROM largest_triangle_three_buckets(
 ```
 
 ![query result](20240625143925.png)
+
+![source](source.png)
+
+![sampled](sampled.png)
