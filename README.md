@@ -28,3 +28,20 @@ SELECT * FROM largest_triangle_three_buckets(
 ![source](source.png)
 
 ![sampled](sampled.png)
+
+Another example
+```SQL
+-- query to downsample 3600 points of sine wave to 10 points
+WITH selected_data AS (
+    SELECT array_agg(POINT(x, sin(radians(x)))) AS data_array
+        FROM generate_series(-180, 180, 0.1) AS x
+)
+
+SELECT * FROM largest_triangle_three_buckets(
+    (SELECT data_array FROM selected_data),
+    10
+);
+```
+
+![3600 points](sine.png)
+![10 points](sampled-10.png)
